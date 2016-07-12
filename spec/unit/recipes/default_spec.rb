@@ -3,7 +3,7 @@ require "spec_helper"
 context "test_example" do
   let(:chef_conf) do
     ChefSpec::SoloRunner.new cookbook_path: %w(./test/cookbooks ../),
-                             step_into: %w(example_topic)
+                             step_into:     %w(example_topic)
   end
 
   let(:shellout) { double("shellout") }
