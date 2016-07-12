@@ -3,17 +3,19 @@ require "spec_helper"
 context "test_example" do
   let(:chef_conf) do
     ChefSpec::SoloRunner.new cookbook_path: %w(./test/cookbooks ../),
-                             step_into: %w(example_topic)
+                             step_into:     %w(example_topic)
   end
 
   let(:shellout) { double("shellout") }
 
   before do
     allow(Mixlib::ShellOut).to receive(:new).and_return(shellout)
-    allow(shellout).to receive(:run_command)
-    allow(shellout).to receive(:error!)
-    allow(shellout).to receive(:live_stream)
-    allow(shellout).to receive(:live_stream=)
+    allow(shellout).to receive_messages(
+      :run_command => nil,
+      :error! => nil,
+      :live_stream => nil,
+      :live_stream= => nil
+    )
   end
 
   describe "topic create" do
