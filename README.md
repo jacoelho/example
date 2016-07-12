@@ -1,4 +1,3 @@
-# example
+# example cookbook
 
-TODO: Enter the cookbook description here.
-
+Example how to create and test a chef custom resource.

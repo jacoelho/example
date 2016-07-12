@@ -10,7 +10,7 @@ load_current_value do
   current_partitions, current_replicas = list(directory, zookeeper, topic)
                                          .values_at *%w(partitions replicas)
 
-  current_value_does_not_exist! unless current_partitions
+  current_value_does_not_exist! unless current_partitions && current_replicas
 
   partitions current_partitions
   replicas current_replicas

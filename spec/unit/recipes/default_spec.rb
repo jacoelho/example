@@ -10,10 +10,12 @@ context "test_example" do
 
   before do
     allow(Mixlib::ShellOut).to receive(:new).and_return(shellout)
-    allow(shellout).to receive(:run_command)
-    allow(shellout).to receive(:error!)
-    allow(shellout).to receive(:live_stream)
-    allow(shellout).to receive(:live_stream=)
+    allow(shellout).to receive_messages(
+      :run_command => nil,
+      :error! => nil,
+      :live_stream => nil,
+      :live_stream= => nil
+    )
   end
 
   describe "topic create" do
